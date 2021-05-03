@@ -1,4 +1,5 @@
 # text-posting
+Used *Node.js, Express.js and MongoDB*
 Feel free to check it [here](https://text-posting.herokuapp.com)
 
 # Installation 
