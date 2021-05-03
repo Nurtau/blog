@@ -1,7 +1,7 @@
 # text-posting
 Feel free to check it [here](https://text-posting.herokuapp.com)
 
-#Installation 
+# Installation 
 To run it locally on your own computer:
 * [Fork](https://help.github.com/articles/fork-a-repo/) this repository
 * [Clone](https://help.github.com/articles/cloning-a-repository/) it to your
