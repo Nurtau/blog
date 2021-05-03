@@ -1,0 +1,72 @@
+<%- include("../includes/begin.ejs") %>
+<link rel="stylesheet" href="css/posts.css" />
+<link rel="stylesheet" href="css/base.css">
+<body>
+	<%- include("../includes/navbar.ejs")  %> 
+	<section>
+		<div class="container ">
+			<h1>Posts</h1>
+			<div class="row">
+				<div
+					class="col-lg-4 col-md-5 col-sm-8 col-12 mt-4"
+				>
+				<div class="block-message">
+					<form id="algin-form" method="post" action="/send">
+						<div class="form-group">
+							
+							<h4>Write a text</h4>
+							<textarea
+								name="textBody"
+								id=""
+								msg
+								cols="30"
+								rows="5"
+								class="form-control"
+								style="background-color: black"
+							></textarea>
+						</div>
+						
+						<div class="form-group">
+							<button type="submit" id="post" class="btn center">Post</button>
+						</div>
+						<% if (errorMsg) { %> 
+							<h5 class="message errorMsg"><%= errorMsg %> </h5>
+							<% } %> 
+						
+						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+					</form>
+				</div>
+				</div>
+				<div class="col-sm-10 col-md-7 col-12 pb-4 offset-md-1 offset-sm-1">
+					<% posts.forEach(post => { %> 
+					<div class="comment w-100 mt-4 text-justify float-left ">
+						<div>
+						<img
+							src="<%= post.user.userImage %> "
+							alt=""
+							class="rounded-circle"
+							width="40"
+							height="40"
+						/>
+						<h4><%= post.user.userName %> </h4>
+						<span>- <%= post.stringDate %> </span> <br />
+						<% if (user.id && user.id.toString() === post.user.userId.toString()) { %> 
+						<form method="post" action="/delete/<%= post._id %>" class="form--delete__post">
+							<input type="hidden" name="userId" value="<%= post.user.userId %> ">
+							<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+						<button type="submit" class="close delete-post"  aria-label="Close">
+							<span aria-hidden="true" style="font-size: 40px;">&times;</span>
+						</button>
+					</form>
+					<% } %> 
+					</div>
+						<p class="mt-2">
+							<%= post.body %> 
+						</p>
+					</div>
+					<% }) %> 
+			</div>
+		</div>
+	</section>
+</body>
+<%- include("../includes/end.ejs") %>

@@ -1,0 +1,63 @@
+<%- include("../includes/begin.ejs") %>
+<link rel="stylesheet" href="css/auth.css" />
+<link rel="stylesheet" href="css/posts.css" />
+<link rel="stylesheet" href="css/base.css">
+
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+/>
+<body>
+	<%- include("../includes/navbar.ejs") %>
+	<div class="login-dark">
+		<form method="post" action="/signup">
+			<% if (errorMsg) { %> 
+				<h2 class="message errorMsg center"><%= errorMsg %> </h2>
+			<% } %> 
+			<h2 class="sr-only">Signup Form</h2>
+			<div class="illustration">
+				<i class="icon ion-ios-locked-outline"></i>
+			</div>
+			<div class="form-group">
+				<input
+					class="form-control"
+					name="nickname"
+					placeholder="Nickname"
+					value="<%= body?.nickname %>"
+				/>
+			</div>
+			<div class="form-group">
+				<input
+					class="form-control"
+					type="email"
+					name="email"
+					placeholder="Email"
+					value="<%= body?.email %>"
+				/>
+			</div>
+			<div class="form-group">
+				<input
+					class="form-control"
+					type="password"
+					name="password"
+					placeholder="Password"
+					value="<%= body?.password %>"
+				/>
+			</div>
+			<div class="form-group">
+				<input
+					class="form-control"
+					type="password"
+					name="confirmPassword"
+					placeholder="Confirm password"
+					value="<%= body?.confirmPassword %>"
+				/>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+			</div>
+			<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+		</form>
+	</div>
+</body>
+<%- include("../includes/end.ejs") %>
