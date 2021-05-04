@@ -16,9 +16,10 @@ exports.getPosts = (req, res, next) => {
 				second: "numeric",
 			};
 			const localLang = req.headers["accept-language"];
+			const oneLang = localLang.split(",")[0];
 			posts = posts.map((post) => {
 				// post.stringDate = post.createdDate.toDateString();
-				post.stringDate = new intl.DateTimeFormat(localLang, options).format(
+				post.stringDate = new intl.DateTimeFormat(oneLang, options).format(
 					post.createdDate
 				);
 				return post;
