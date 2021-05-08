@@ -1,4 +1,4 @@
-# text-posting
+# Blog website
 Used *Node.js, Express.js and MongoDB* <br />
 Feel free to check it [here](https://text-posting.herokuapp.com)
 
